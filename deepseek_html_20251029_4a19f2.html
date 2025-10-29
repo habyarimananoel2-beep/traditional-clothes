@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postharvest Plant Management</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2e7d32;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #2e7d32;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #4caf50;
+        }
+        
+        /* Introduction Section */
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Techniques Section */
+        .techniques {
+            background-color: #f1f8e9;
+        }
+        
+        .technique-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2e7d32;
+        }
+        
+        /* Challenges Section */
+        .challenges-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .challenge-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #4caf50;
+        }
+        
+        .challenge-item h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #2e7d32;
+        }
+        
+        .challenge-item h3 i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Resources Section */
+        .resources {
+            background-color: #f1f8e9;
+        }
+        
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .resource-link {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-link i {
+            font-size: 2.5rem;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+        
+        .resource-link h3 {
+            margin-bottom: 15px;
+            color: #2e7d32;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #4caf50;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #4caf50;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bdbdbd;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h1>Postharvest Plant Management</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#techniques">Techniques</a></li>
+                        <li><a href="#challenges">Challenges</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Maximizing Plant Quality After Harvest</h2>
+            <p>Learn essential techniques to preserve freshness, extend shelf life, and maintain nutritional value of harvested plants.</p>
+            <a href="#introduction" class="btn">Explore Methods</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="container">
+            <div class="section-title">
+                <h2>What is Postharvest Management?</h2>
+            </div>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>Postharvest management refers to the stage of crop production immediately following harvest, including cooling, cleaning, sorting, packing, and storage. Proper postharvest handling is crucial for maintaining quality, extending shelf life, and reducing losses between harvest and consumption.</p>
+                    <br>
+                    <p>Effective postharvest practices can significantly reduce food waste, maintain nutritional quality, and increase market value of agricultural products. This is especially important in developing countries where postharvest losses can reach up to 40% for fruits and vegetables.</p>
+                    <br>
+                    <p>Key factors affecting postharvest quality include temperature, humidity, handling methods, and storage conditions. Understanding these factors is essential for anyone involved in agriculture, from small-scale farmers to large commercial operations.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Postharvest handling of plants">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techniques Section -->
+    <section id="techniques" class="techniques">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Postharvest Techniques</h2>
+            </div>
+            <div class="technique-cards">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1589923188651-268a35c0d0bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Temperature Management">
+                    </div>
+                    <div class="card-content">
+                        <h3>Temperature Management</h3>
+                        <p>Proper cooling immediately after harvest is critical to slow down respiration and ripening processes. Different plants require specific temperature ranges to maintain quality during storage and transport.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1556909114-4d0d853e5e25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Humidity Control">
+                    </div>
+                    <div class="card-content">
+                        <h3>Humidity Control</h3>
+                        <p>Maintaining optimal humidity levels prevents moisture loss (wilting) and reduces decay. Most fruits and vegetables require high relative humidity (85-95%) to stay fresh.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modified Atmosphere Packaging">
+                    </div>
+                    <div class="card-content">
+                        <h3>Modified Atmosphere Packaging</h3>
+                        <p>This technique alters the composition of gases surrounding the product to slow down ripening and senescence. It involves reducing oxygen and increasing carbon dioxide levels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section id="challenges">
+        <div class="container">
+            <div class="section-title">
+                <h2>Common Postharvest Challenges</h2>
+            </div>
+            <div class="challenges-content">
+                <div class="challenge-item">
+                    <h3><i class="fas fa-temperature-high"></i> Temperature Fluctuations</h3>
+                    <p>Inconsistent temperatures during storage and transport can accelerate spoilage, reduce quality, and shorten shelf life. Maintaining the cold chain is essential for perishable products.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3><i class="fas fa-bug"></i> Pest and Disease Infestation</h3>
+                    <p>Harvested plants are vulnerable to pathogens and pests that can cause significant losses. Proper sanitation and appropriate treatments are necessary to prevent infestations.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3><i class="fas fa-tint"></i> Moisture Loss</h3>
+                    <p>Transpiration causes water loss, leading to wilting, shriveling, and reduced market value. Proper packaging and humidity control can minimize these effects.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3><i class="fas fa-wind"></i> Ethylene Sensitivity</h3>
+                    <p>Many fruits and vegetables are sensitive to ethylene gas, which accelerates ripening and senescence. Separating ethylene-producing and ethylene-sensitive products is crucial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>Additional Resources</h2>
+            </div>
+            <div class="resource-links">
+                <div class="resource-link">
+                    <i class="fas fa-book"></i>
+                    <h3>Research Papers</h3>
+                    <p>Access the latest scientific studies on postharvest technology and plant physiology.</p>
+                </div>
+                <div class="resource-link">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Tutorials</h3>
+                    <p>Watch practical demonstrations of postharvest handling techniques for various crops.</p>
+                </div>
+                <div class="resource-link">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Tools & Calculators</h3>
+                    <p>Use specialized tools to calculate shelf life, cooling requirements, and storage conditions.</p>
+                </div>
+                <div class="resource-link">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Community</h3>
+                    <p>Connect with postharvest specialists, researchers, and practitioners worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>We are dedicated to providing comprehensive information on postharvest plant management to reduce food waste and improve agricultural sustainability.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#techniques">Techniques</a></li>
+                        <li><a href="#challenges">Challenges</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@postharvest.org</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Agriculture Ave, Farmville</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Postharvest Plant Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
